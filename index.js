@@ -10,6 +10,25 @@ app.use((req, res, proximo) => {  //sem o 3º parametro proximo chama o próximo
     proximo()
 })
 
+app.get('/clientes/relatorio', (req, res) => {
+    res.send(`Cliente relatório: completo = ${req.query.completo} ano = ${req.query.ano}`)
+})
+
+app.post('/corpo', (req, res) => {
+    let corpo = ''
+    req.on('data', function(parte) {
+      corpo += parte
+    })
+  
+    req.on('end', function() {
+      res.send(corpo)
+    })
+})
+
+app.get('/clientes/:id', (req, res) => {
+    res.send(`Clientes ${req.params.id} selecionado !`)
+})
+
 
 app.get('/opa',(req, res, proximo) => {
     //res.send('<h1>Estou bem!</h1><br><br><h2>Tipo é HTML!</h2>')
@@ -49,3 +68,6 @@ app.listen(3000, () => {
 
 //localhost:3000
 //localhost:3000/opa
+//localhost:3000/clientes/1
+//localhost:3000/clientes/relatorio?completo=true&ano=2018
+//localhost:3000/corpo
