@@ -1,6 +1,10 @@
 const express = require('express')
 const app = express()
 
+const saudacao = require('./saudacaoMid')
+
+app.use(saudacao('Roberto'))
+
 app.use((req, res, proximo) => {  //sem o 3º parametro proximo chama o próximo app
     console.log('Antes...')  //fazer requisicao no browser ou outro
     proximo()
