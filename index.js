@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 
 const saudacao = require('./saudacaoMid')
 const usuarioApi = require('./api/usuario')
+require('./api/produto')(app, 'com param!')
 
 
 app.post('/usuario', usuarioApi.salvar)
@@ -82,3 +83,4 @@ app.listen(3000, () => {
 //localhost:3000/clientes/relatorio?completo=true&ano=2018
 //localhost:3000/corpo
 //localhost:3000/usuario
+//localhost:3000/produto
