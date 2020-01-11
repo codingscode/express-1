@@ -3,7 +3,11 @@ const app = express()
 const bodyParser = require('body-parser')
 
 const saudacao = require('./saudacaoMid')
+const usuarioApi = require('./api/usuario')
 
+
+app.post('/usuario', usuarioApi.salvar)
+app.get('/usuario', usuarioApi.obter)
 
 app.use(bodyParser.text())
 app.use(bodyParser.json())
@@ -77,3 +81,4 @@ app.listen(3000, () => {
 //localhost:3000/clientes/1
 //localhost:3000/clientes/relatorio?completo=true&ano=2018
 //localhost:3000/corpo
+//localhost:3000/usuario
